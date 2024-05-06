@@ -1,9 +1,8 @@
 package test;
 
 import javax.swing.JFrame;
-import java.awt.Color;
-import java.awt.Dimension;
-import area.Area;
+import java.awt.*;
+import area.Form;
 
 public class Main{
     public static void main(String[] args){
@@ -11,11 +10,12 @@ public class Main{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(new Dimension(400,400));
         f.setLocationRelativeTo(null);
+        f.getContentPane().setLayout(null);
 
-        Area a = new Area();
-        a.setBackground(Color.RED);
+        Point p = new Point(0,0);
+        Form g = new Form(p);
 
-        f.getContentPane().add(a);
+        f.getContentPane().add(g);
 
         f.setVisible(true);
     }

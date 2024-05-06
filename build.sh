@@ -14,3 +14,7 @@ javac -d "$bin_dir" -cp "$lib_dir/*" "$current_dir"/src/temp/*.java
 rm -R "$current_dir"/src/temp
 
 echo "Compilation finished".
+echo "Running test "
+cd bin
+java test.Main
+cd ..
