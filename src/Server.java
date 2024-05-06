@@ -1,7 +1,8 @@
 package graphe; 
 
-import javax.swing.Server;
 import java.awt.Point;
+import java.util.Vector;
+import javax.swing.JPanel;
 
 public class Server extends JPanel{
     Point position;
@@ -12,6 +13,7 @@ public class Server extends JPanel{
     public Server(){ 
 
     }
+    
     public Server(String ip, Vector<String> sites){
         this.setIpAdress(ip);
         this.setListSites(sites);
