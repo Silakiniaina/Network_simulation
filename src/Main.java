@@ -3,7 +3,6 @@ package test;
 import javax.swing.JFrame;
 import java.awt.*;
 import area.Area;
-import listener.AreaListener;
 
 public class Main{
     public static void main(String[] args){
@@ -14,8 +13,6 @@ public class Main{
         // f.getContentPane().setLayout(null);
 
         Area a = new Area();
-        a.setLayout(null);
-        a.addMouseListener(new AreaListener(a));
 
         f.getContentPane().add(a);
 
