@@ -2,7 +2,8 @@ package test;
 
 import javax.swing.JFrame;
 import java.awt.*;
-import area.Form;
+import area.Area;
+import listener.AreaListener;
 
 public class Main{
     public static void main(String[] args){
@@ -10,12 +11,13 @@ public class Main{
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(new Dimension(400,400));
         f.setLocationRelativeTo(null);
-        f.getContentPane().setLayout(null);
+        // f.getContentPane().setLayout(null);
 
-        Point p = new Point(0,0);
-        Form g = new Form(p);
+        Area a = new Area();
+        a.setLayout(null);
+        a.addMouseListener(new AreaListener(a));
 
-        f.getContentPane().add(g);
+        f.getContentPane().add(a);
 
         f.setVisible(true);
     }
