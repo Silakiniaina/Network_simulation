@@ -1,8 +1,8 @@
 SPRINT01: Creation of a server
 []click to an area and a form for installing a server appear 
- -Class area extends JPanel
- -Class form extends JPanel 
- -Class Server extends JPanel
+ -(OK)Class area extends JPanel
+ -(OK)Class form extends JPanel 
+ -(OK)Class Server extends JPanel
  -Create a function draw in Server
  -Constructor of Form that will take a Point p where to show the form
  -Add a mouseListener to this area : 
