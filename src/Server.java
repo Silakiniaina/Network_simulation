@@ -22,7 +22,7 @@ public class Server extends JPanel{
     }
 
     // Draw a server
-    public void draw(Graphics g){
+    public void paintComponent(Graphics g){
         g.setColor(Color.BLUE);
         int x = (int)this.getPosition().getX();
         int y = (int)this.getPosition().getY();
