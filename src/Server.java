@@ -3,6 +3,9 @@ package graphe;
 import java.awt.Point;
 import java.util.Vector;
 import javax.swing.JPanel;
+import java.awt.Graphics2d;
+import java.awt.Graphics;
+import java.awt.Color;
 
 public class Server extends JPanel{
     Point position;
@@ -13,10 +16,17 @@ public class Server extends JPanel{
     public Server(){ 
 
     }
-    
     public Server(String ip, Vector<String> sites){
         this.setIpAdress(ip);
         this.setListSites(sites);
+    }
+
+    // Draw a server
+    public void draw(Graphics g){
+        g.setColor(Color.BLUE);
+        int x = (int)this.getPosition().getX();
+        int y = (int)this.getPosition().getY();
+        g.fillRect(x,y,100,100);
     }
 
     // Getters
