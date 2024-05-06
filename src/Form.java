@@ -6,12 +6,19 @@ import java.awt.*;
 public class Form extends JPanel{
     JTextField inputeIp;
     JTextField inputSites;
+    Point position;
 
     /* Constructors */
     public Form(Point position){
+        this.setPosition(position);
         this.setBackground(Color.WHITE);
-        this.setBounds((int)position.getX(),(int)position.getY(),170,100);
+        this.setBounds((int)this.getPosition().getX(),(int)this.getPosition().getY(),170,100);
         this.initComponent();
+    }
+
+    /* update the position of a form */
+    public void update(){
+        this.setBounds((int)this.getPosition().getX(),(int)this.getPosition().getY(),170,100);
     }
 
     /* Init component */
@@ -50,6 +57,9 @@ public class Form extends JPanel{
     public JTextField getInputSites(){
         return this.inputSites;
     }
+    public Point getPosition(){
+        return this.position;
+    }
 
     /* Setters */
     public void setInputeIp(JTextField t){
@@ -57,5 +67,8 @@ public class Form extends JPanel{
     }
     public void setInputSites(JTextField t){
         this.inputSites = t;
+    }
+    public void setPosition(Point p){
+        this.position = p;
     }
 }

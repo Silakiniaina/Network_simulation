@@ -6,18 +6,23 @@ import java.awt.event.*;
 
 public class AreaListener implements MouseListener{
     Area area;
+    Form form;
 
     /* Constructor */
     public AreaListener(Area a){
         this.setArea(a);
+        Point p = new Point(-100,-100);
+        Form f = new Form(p);
+        this.setForm(f);
     }
 
     /* Overrides */
     public void mouseClicked(MouseEvent e){
         Point p = e.getPoint();
         System.out.println("Clicked on : x="+p.getX()+" , y="+p.getY());
-        Form f = new Form(p);
-        this.getArea().add(f);
+        this.getForm().setPosition(p);
+        this.getForm().update();
+        this.getArea().add(this.getForm());
         this.getArea().revalidate();
     }
 
@@ -38,9 +43,15 @@ public class AreaListener implements MouseListener{
     public Area getArea(){
         return this.area;
     }
+    public Form getForm(){
+        return this.form;
+    }
 
     /* Setters */
     public void setArea(Area a){
         this.area = a;
+    }
+    public void setForm(Form f){
+        this.form = f;
     }
 }

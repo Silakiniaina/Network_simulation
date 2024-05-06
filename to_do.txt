@@ -7,8 +7,8 @@ SPRINT01: Creation of a server
  -Constructor of Form that will take a Point p where to show the form
  -Add a mouseListener to this area : 
 	-When clicked :
-	 * get the current position of the pointer
-  	 * show a Form to the position of the pointer
+	 *(OK)get the current position of the pointer
+  	 *(OK)show a Form to the position of the pointer
 []after entering the data from the form , a server appear in the clicked area
  if comfirmed : 
 	 - call function draw to the Server instancied
