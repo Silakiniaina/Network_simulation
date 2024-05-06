@@ -3,7 +3,6 @@ package graphe;
 import java.awt.Point;
 import java.util.Vector;
 import javax.swing.JPanel;
-import java.awt.Graphics2d;
 import java.awt.Graphics;
 import java.awt.Color;
 
