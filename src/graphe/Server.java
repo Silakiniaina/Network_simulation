@@ -6,6 +6,8 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import listener.ServerListener;
+
 import java.awt.Color;
 
 public class Server extends JPanel{
