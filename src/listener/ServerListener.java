@@ -22,8 +22,7 @@ public class ServerListener implements MouseListener{
             if(s.equals(clicked)){
                 ServerMenu sm = new ServerMenu(s);
                 s.getArea().add(sm);
-                s.getArea().revalidate();
-                s.getArea().repaint();
+                s.getArea().update();
             }
         }
     }

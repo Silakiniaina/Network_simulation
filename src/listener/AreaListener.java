@@ -31,8 +31,7 @@ public class AreaListener implements MouseListener{
             System.out.println("Clicked LEFT on : "+p.getX()+" , y="+p.getY());
             this.getForm().hide();
         }
-        this.getArea().revalidate();
-        this.getForm().getArea().repaint();
+        this.getArea().update();
     }
 
     

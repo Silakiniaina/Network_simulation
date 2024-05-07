@@ -27,8 +27,7 @@ public class ButtonAddListener implements ActionListener{
             s.setArea(this.getForm().getArea());
             this.getForm().getArea().addServer(s);
             this.getForm().hide();
-            this.getForm().getArea().revalidate();
-            this.getForm().getArea().repaint();
+            this.getForm().getArea().update();
         }
     }
 
