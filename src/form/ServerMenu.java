@@ -1,6 +1,12 @@
 package form;
 
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import graphe.Server;
@@ -13,8 +19,41 @@ public class ServerMenu extends JPanel{
     /* Constructors */
     public ServerMenu(Server s){
         this.setServer(s);
+        this.initComponent();
     }
-    
+
+    /* Get the form of the menu */
+    private void initComponent(){
+        /* Layout  */
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        /* Title */
+        JLabel title = new JLabel("Server Menu");
+        title.setFont(new Font("Sans serif", Font.BOLD, 16));
+
+        /* Button link */
+        this.setButtonLink(new JButton("Link"));
+        this.getButtonLink().setSize(95,20);
+        this.getButtonLink().setBorder(BorderFactory.createLineBorder(Color.BLACK,1,true));
+        this.getButtonLink().setBackground(Color.BLUE);
+        
+        /* Button remove */
+        this.setButtonDelete(new JButton("Delete"));
+        this.getButtonDelete().setSize(95,20);
+        this.getButtonDelete().setBorder(BorderFactory.createLineBorder(Color.BLACK,1,true));
+        this.getButtonDelete().setBackground(Color.RED);
+
+        /* Location */
+        int x = (int)this.getServer().getPosition().getX();
+        int y = (int)this.getServer().getPosition().getX();
+        this.setBounds(x, y, 100, 100);
+
+        /* Adding child */
+        this.add(title);
+        this.add(this.getButtonLink());
+        this.add(this.getButtonDelete());
+    }
+
     /* Getters */
     public JButton getButtonLink() {
         return buttonLink;
