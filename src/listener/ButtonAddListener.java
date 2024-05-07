@@ -5,14 +5,14 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Vector;
 
-import area.Form;
+import form.ServerForm;
 import graphe.Server;
 
 public class ButtonAddListener implements ActionListener{
-    Form form;
+    ServerForm form;
 
     /* Constructor */
-    public ButtonAddListener(Form f){
+    public ButtonAddListener(ServerForm f){
         this.setForm(f);
     }
 
@@ -31,12 +31,12 @@ public class ButtonAddListener implements ActionListener{
     }
 
     /* Getters */
-    public Form getForm(){
+    public ServerForm getForm(){
         return this.form;
     }
 
     /* Setters */
-    public void setForm(Form f){
+    public void setForm(ServerForm f){
         this.form = f;
     }
 
