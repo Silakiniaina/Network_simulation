@@ -26,6 +26,7 @@ public class ButtonAddListener implements ActionListener{
             Server s = new Server(this.getForm().getPosition(),(String)data.get("ip"), (Vector<String>)data.get("sites"));
             s.setArea(this.getForm().getArea());
             this.getForm().getArea().addServer(s);
+            this.getForm().hide();
             this.getForm().getArea().revalidate();
             this.getForm().getArea().repaint();
         }
