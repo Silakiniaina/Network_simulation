@@ -1,30 +1,31 @@
 SPRINT01: Creation of a server
-[]click to an area and a form for installing a server appear 
- -Class area extends JPanel
- -Class form extends JPanel 
- -Class Server extends JPanel
- -Create a function draw in Server
- -Constructor of Form that will take a Point p where to show the form
- -Add a mouseListener to this area : 
+[x]click to an area and a form for installing a server appear
+ -(OK)Class area extends JPanel
+ -(OK)Class form extends JPanel
+ -(OK)Class Server extends JPanel
+ -(OK)Create a function paintComponent in Server
+ -(OK)Constructor of Form that will take a Point p where to show the form
+ -(OK)Add a mouseListener to this area :
 	-When clicked :
-	 * get the current position of the pointer
-  	 * show a Form to the position of the pointer
-[]after entering the data from the form , a server appear in the clicked area
- if comfirmed : 
-	 - call function draw to the Server instancied
+	 *(OK)get the current position of the pointer
+  	 *(OK)show a Form to the position of the pointer
+[x]after entering the data from the form , a server appear in the clicked area
+ if comfirmed :
+	 - (OK)call function draw to the Server instancied
 
 SPRINT02: Linking 2 Servers or more
 []choose a server to create link with another server
- - Add a mouseListener to the server : 
-	-When clicked :  
- 	 * show a form : make link , delete, edit
-         * When click to make link : 
-		-All the border of another server will be : Blue with shadow
-		-When click to another server : A line will be drawn corresponding the current server to the clicked server and their pounds will be written in the middle of the line.
+
+- Add a mouseListener to the server :
+  -When clicked :
+  * show a form : make link , delete, edit
+    * When click to make link :
+      -All the border of another server will be : Blue with shadow
+      -When click to another server : A line will be drawn corresponding the current server to the clicked server and their pounds will be written in the middle of the line.
 
 SPRINT03: Drag a server
 []drag a server to change its place
- -Add a drag motion to the server : 
+ -Add a drag motion to the server :
  	-Update its position when dragging
 
  SPRINT04: Implementation algorithm
@@ -32,6 +33,6 @@ SPRINT03: Drag a server
  -Add option : Search in the server form in order to find the shortest way to a domain name
  -Create a function that returns a Vector of server that is the shortest way to the domain
 
-Constraints : 
+Constraints :
 *Server : IP , domains
 *Link : pound
