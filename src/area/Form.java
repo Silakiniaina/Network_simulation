@@ -8,6 +8,7 @@ import java.util.Vector;
 import listener.ButtonAddListener;;
 
 public class Form extends JPanel{
+    Area area;
     JTextField inputIp;
     JTextField inputSites;
     Point position;
@@ -110,6 +111,9 @@ public class Form extends JPanel{
     public Point getPosition(){
         return this.position;
     }
+    public Area getArea(){
+        return this.area;
+    }
 
     /* Setters */
     public void setInputIp(JTextField t){
@@ -120,5 +124,8 @@ public class Form extends JPanel{
     }
     public void setPosition(Point p){
         this.position = p;
+    }
+    public void setArea(Area a){
+        this.area = a;
     }
 }

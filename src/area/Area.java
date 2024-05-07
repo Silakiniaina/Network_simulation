@@ -28,5 +28,8 @@ public class Area extends JPanel{
     /* Adding new Server */
     public void addServer(Server s){
         this.getListServer().add(s);
+        this.add(s);
+        System.out.println("Adding server...");
+        System.out.println("Size vector server : "+this.getListServer().size());
     }
 }

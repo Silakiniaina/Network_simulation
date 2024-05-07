@@ -4,8 +4,6 @@ import java.awt.*;
 import area.*;
 import java.awt.event.*;
 
-import javax.swing.JButton;
-
 public class AreaListener implements MouseListener{
     Area area;
     Form form;
@@ -15,6 +13,7 @@ public class AreaListener implements MouseListener{
         this.setArea(a);
         Point p = new Point(-1000,-1000);
         Form f = new Form(p);
+        f.setArea(a);
         this.setForm(f);
     }
 
@@ -26,12 +25,12 @@ public class AreaListener implements MouseListener{
             this.getForm().setPosition(p);
             this.getForm().update();
             this.getArea().add(this.getForm());
-            this.getArea().revalidate();
         }else if(e.getButton() == MouseEvent.BUTTON1){
             System.out.println("Clicked LEFT on : "+p.getX()+" , y="+p.getY());
             this.getForm().hide();
         }
         this.getArea().revalidate();
+        this.getForm().getArea().repaint();
     }
 
     public void mouseEntered(MouseEvent e){

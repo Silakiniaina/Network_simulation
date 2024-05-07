@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import area.Form;
+import graphe.Server;
 
 public class ButtonAddListener implements ActionListener{
     Form form;
@@ -20,10 +21,13 @@ public class ButtonAddListener implements ActionListener{
     public void actionPerformed(ActionEvent arg0) {
         if(!this.getForm().isOkay()){
             System.out.println("Please fill the IP input");
+        }else{
+            HashMap<String,Object> data = this.getForm().getValues();
+            Server s = new Server(this.getForm().getPosition(),(String)data.get("ip"), (Vector<String>)data.get("sites"));
+            this.getForm().getArea().addServer(s);
+            this.getForm().getArea().revalidate();
+            this.getForm().getArea().repaint();
         }
-        HashMap<String,Object> data = this.getForm().getValues();
-        System.out.println(data.size());
-        
     }
 
     /* Getters */

@@ -2,8 +2,10 @@ package graphe;
 
 import java.awt.Point;
 import java.util.Vector;
+
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import java.awt.Graphics;
+
 import java.awt.Color;
 
 public class Server extends JPanel{
@@ -15,17 +17,20 @@ public class Server extends JPanel{
     public Server(){ 
 
     }
-    public Server(String ip, Vector<String> sites){
+    public Server(Point p,String ip, Vector<String> sites){
         this.setIpAdress(ip);
         this.setListSites(sites);
+        this.setPosition(p);
+        int x = (int)this.getPosition().getX();
+        int y = (int)this.getPosition().getY();
+        this.setBounds(x - 60,y - 60,60,60);
+        this.draw();
     }
 
     // Draw a server
-    public void paintComponent(Graphics g){
-        g.setColor(Color.BLUE);
-        int x = (int)this.getPosition().getX();
-        int y = (int)this.getPosition().getY();
-        g.fillRect(x,y,100,100);
+    public void draw(){
+        this.setBorder(BorderFactory.createLineBorder(Color.BLUE,3,true));
+        this.setBackground(Color.LIGHT_GRAY);
     }
 
     // Getters

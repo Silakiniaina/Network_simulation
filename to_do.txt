@@ -1,5 +1,5 @@
 SPRINT01: Creation of a server
-[]click to an area and a form for installing a server appear
+[x]click to an area and a form for installing a server appear
  -(OK)Class area extends JPanel
  -(OK)Class form extends JPanel
  -(OK)Class Server extends JPanel
@@ -9,9 +9,9 @@ SPRINT01: Creation of a server
 	-When clicked :
 	 *(OK)get the current position of the pointer
   	 *(OK)show a Form to the position of the pointer
-[]after entering the data from the form , a server appear in the clicked area
+[x]after entering the data from the form , a server appear in the clicked area
  if comfirmed :
-	 - call function draw to the Server instancied
+	 - (OK)call function draw to the Server instancied
 
 SPRINT02: Linking 2 Servers or more
 []choose a server to create link with another server
