@@ -2,6 +2,7 @@ package area;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 import java.util.Vector;
 
 import listener.ButtonAddListener;;
@@ -27,7 +28,7 @@ public class Form extends JPanel{
     }
 
     /* Init component */
-    public void initComponent(){
+    private void initComponent(){
         this.setLayout(new FlowLayout());
         Color c = Color.WHITE;
         this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2,true));
@@ -72,13 +73,29 @@ public class Form extends JPanel{
     }
 
     /* Fetching the entered data from the form */
-    public Vector<String> getValues(){
-        Vector<String> result = new Vector<String>();
-        result.add(this.getInputIp().getText());
+    public HashMap<String,Object> getValues(){
+        HashMap<String,Object> result = new HashMap<String,Object>();
+        /* the IP */
+        result.put("IP",this.getInputIp().getText());
+
+        /* List of the sites */
+        Vector<String> ls_sites = new Vector<String>();
         String sites = this.getInputSites().getText();
         String[] ls = sites.split(";");
         for(int i=0; i<ls.length; i++){
-            result.add(ls[i]);
+            ls_sites.add(ls[i]);
+        }
+        result.put("sites", ls_sites);
+
+        return result;
+    }
+
+    /* Check if the form is valid (there is no empty input) */
+    public boolean isOkay(){
+        boolean result = true;
+        String inputText = this.getInputIp().getText();
+        if(inputText == null || inputText.trim().equalsIgnoreCase("")){
+            result = false;
         }
         return result;
     }
