@@ -17,7 +17,13 @@ public class Area extends JPanel{
         this.addMouseListener(new AreaListener(this));
         this.setServerListener(new ServerListener());
     }
-
+    
+    /* updating all the components in the area */
+    public void update(){
+        this.revalidate();
+        this.repaint();
+    }
+    
     /* Getters */
     public Vector<Server> getListServer(){
         return this.listServer;
