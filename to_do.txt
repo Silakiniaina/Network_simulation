@@ -18,7 +18,7 @@ SPRINT02: Linking 2 Servers or more
 
 - Add a mouseListener to the server :
   -When clicked :
-  * show a form : make link , delete, edit
+  * show a form : make link , delete
     * When click to make link :
       -All the border of another server will be : Blue with shadow
       -When click to another server : A line will be drawn corresponding the current server to the clicked server and their pounds will be written in the middle of the line.
