@@ -11,6 +11,12 @@ public class ServerListener implements MouseListener{
     public ServerListener(Server s){
         this.setServer(s);
     }
+    
+    /* Managing the event when clicking to a server */
+    @Override
+    public void mouseClicked(MouseEvent arg0) {
+        System.out.println("Clicked to a server");
+    }
 
     /* Getters */
     public Server getServer() {
@@ -20,5 +26,30 @@ public class ServerListener implements MouseListener{
     /* Setters */
     public void setServer(Server server) {
         this.server = server;
+    }
+
+
+    @Override
+    public void mouseEntered(MouseEvent arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void mouseExited(MouseEvent arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent arg0) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent arg0) {
+        // TODO Auto-generated method stub
+        
     }
 }
