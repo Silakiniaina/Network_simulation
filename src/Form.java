@@ -18,7 +18,7 @@ public class Form extends JPanel{
 
     /* update the position of a form */
     public void update(){
-        this.setBounds((int)this.getPosition().getX(),(int)this.getPosition().getY(),150,100);
+        this.setBounds((int)this.getPosition().getX(),(int)this.getPosition().getY(),150,120);
     }
 
     /* Init component */
@@ -28,6 +28,11 @@ public class Form extends JPanel{
         this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2,true));
         this.setBackground(c);
 
+        /* Title */
+        JLabel title = new JLabel("New Server");
+        title.setFont(new Font("Sans Serif", Font.BOLD, 16));
+
+        /* Input IP */
         JPanel panel_ip = new JPanel();
         panel_ip.setLayout(new FlowLayout(FlowLayout.LEFT,1,1));
         JLabel label_ip = new JLabel("IP Adr :");
@@ -36,6 +41,7 @@ public class Form extends JPanel{
         panel_ip.add(this.getInputeIp());
         panel_ip.setBackground(c);
 
+        /* Input Sites */
         JPanel panel_sites = new JPanel();
         panel_sites.setLayout(new FlowLayout(FlowLayout.LEFT,1,1));
         JLabel label_sites = new JLabel("Sites  : ");
@@ -44,8 +50,10 @@ public class Form extends JPanel{
         panel_sites.add(this.getInputSites());
         panel_sites.setBackground(c);
 
+        /* Button */
         JButton btn = new JButton("Add");
         
+        this.add(title);
         this.add(panel_ip);
         this.add(panel_sites);
         this.add(btn);
@@ -53,7 +61,7 @@ public class Form extends JPanel{
 
     /* Disappear the form */
     public void hide(){
-        this.setPosition(new Point(-100,-100));
+        this.setPosition(new Point(-1000,-1000));
         this.update();
     }
 
