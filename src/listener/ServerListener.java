@@ -1,31 +1,42 @@
 package listener;
 
 import java.awt.event.*;
+import java.util.Vector;
 
 import graphe.Server;
 
 public class ServerListener implements MouseListener{
-    Server server;
+    Vector<Server> listServers;
 
     /* Constructors */
-    public ServerListener(Server s){
-        this.setServer(s);
+    public ServerListener(){
+        this.setListServer(new Vector<Server>());
     }
     
     /* Managing the event when clicking to a server */
     @Override
-    public void mouseClicked(MouseEvent arg0) {
-        System.out.println("Clicked to a server");
+    public void mouseClicked(MouseEvent e) {
+        Server clicked = (Server)e.getComponent();
+        for(Server s : this.getListServer()){
+            if(s.equals(clicked)){
+                System.out.println("Clicked server");
+            }
+        }
     }
 
     /* Getters */
-    public Server getServer() {
-        return server;
+    public Vector<Server> getListServer() {
+        return listServers;
     }
     
     /* Setters */
-    public void setServer(Server server) {
-        this.server = server;
+    public void setListServer(Vector<Server> ls) {
+        this.listServers = ls;
+    }
+
+    /* Adding a server */
+    public void addServer(Server s){
+        this.getListServer().add(s);
     }
 
 

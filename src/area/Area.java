@@ -15,7 +15,7 @@ public class Area extends JPanel{
         this.setListServer(new Vector<Server>());
         this.setLayout(null);
         this.addMouseListener(new AreaListener(this));
-        this.setServerListener(null);
+        this.setServerListener(new ServerListener());
     }
 
     /* Getters */
@@ -36,10 +36,8 @@ public class Area extends JPanel{
 
     /* Adding new Server */
     public void addServer(Server s){
-        if(this.getServerListener() == null){
-            this.setServerListener(new ServerListener(s));
-        }
         s.addMouseListener(this.getServerListener());
+        this.getServerListener().addServer(s);
         this.getListServer().add(s);
         this.add(s);
     }
