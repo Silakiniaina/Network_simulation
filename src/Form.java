@@ -22,6 +22,8 @@ public class Form extends JPanel{
     /* update the position of a form */
     public void update(){
         this.setBounds((int)this.getPosition().getX(),(int)this.getPosition().getY(),150,120);
+        this.getInputIp().setText("");
+        this.getInputSites().setText("");
     }
 
     /* Init component */
