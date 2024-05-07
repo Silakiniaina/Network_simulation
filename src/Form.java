@@ -12,8 +12,8 @@ public class Form extends JPanel{
     public Form(Point position){
         this.setPosition(position);
         this.setBackground(Color.WHITE);
-        this.setBounds((int)this.getPosition().getX(),(int)this.getPosition().getY(),170,100);
         this.initComponent();
+        this.update();
     }
 
     /* update the position of a form */
