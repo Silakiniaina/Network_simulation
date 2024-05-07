@@ -2,9 +2,12 @@ package area;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Vector;
+
+import listener.ButtonAddListener;;
 
 public class Form extends JPanel{
-    JTextField inputeIp;
+    JTextField inputIp;
     JTextField inputSites;
     Point position;
 
@@ -36,9 +39,9 @@ public class Form extends JPanel{
         JPanel panel_ip = new JPanel();
         panel_ip.setLayout(new FlowLayout(FlowLayout.LEFT,1,1));
         JLabel label_ip = new JLabel("IP Adr :");
-        this.setInputeIp(new JTextField(8));
+        this.setInputIp(new JTextField(8));
         panel_ip.add(label_ip);
-        panel_ip.add(this.getInputeIp());
+        panel_ip.add(this.getInputIp());
         panel_ip.setBackground(c);
 
         /* Input Sites */
@@ -52,6 +55,7 @@ public class Form extends JPanel{
 
         /* Button */
         JButton btn = new JButton("Add");
+        btn.addActionListener(new ButtonAddListener(this));
         
         this.add(title);
         this.add(panel_ip);
@@ -65,9 +69,21 @@ public class Form extends JPanel{
         this.update();
     }
 
+    /* Fetching the entered data from the form */
+    public Vector<String> getValues(){
+        Vector<String> result = new Vector<String>();
+        result.add(this.getInputIp().getText());
+        String sites = this.getInputSites().getText();
+        String[] ls = sites.split(";");
+        for(int i=0; i<ls.length; i++){
+            result.add(ls[i]);
+        }
+        return result;
+    }
+
     /* Getters */
-    public JTextField getInputeIp(){
-        return this.inputeIp;
+    public JTextField getInputIp(){
+        return this.inputIp;
     }
     public JTextField getInputSites(){
         return this.inputSites;
@@ -77,8 +93,8 @@ public class Form extends JPanel{
     }
 
     /* Setters */
-    public void setInputeIp(JTextField t){
-        this.inputeIp = t;
+    public void setInputIp(JTextField t){
+        this.inputIp = t;
     }
     public void setInputSites(JTextField t){
         this.inputSites = t;
