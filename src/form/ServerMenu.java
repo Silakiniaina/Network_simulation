@@ -1,6 +1,7 @@
 package form;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
@@ -25,28 +26,30 @@ public class ServerMenu extends JPanel{
     /* Get the form of the menu */
     private void initComponent(){
         /* Layout  */
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(null);
+        this.setBackground(Color.WHITE);
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK,2,true));
 
         /* Title */
         JLabel title = new JLabel("Server Menu");
+        title.setBounds(5, 0, 110, 20);
         title.setFont(new Font("Sans serif", Font.BOLD, 16));
 
         /* Button link */
         this.setButtonLink(new JButton("Link"));
-        this.getButtonLink().setSize(95,20);
-        this.getButtonLink().setBorder(BorderFactory.createLineBorder(Color.BLACK,1,true));
         this.getButtonLink().setBackground(Color.BLUE);
+        this.getButtonLink().setOpaque(true);
+        this.getButtonLink().setBounds(5, 22, 110, 30);
         
         /* Button remove */
         this.setButtonDelete(new JButton("Delete"));
-        this.getButtonDelete().setSize(95,20);
-        this.getButtonDelete().setBorder(BorderFactory.createLineBorder(Color.BLACK,1,true));
         this.getButtonDelete().setBackground(Color.RED);
-
+        this.getButtonDelete().setBounds(5, 55, 110, 30);
+        
         /* Location */
         int x = (int)this.getServer().getPosition().getX();
-        int y = (int)this.getServer().getPosition().getX();
-        this.setBounds(x, y, 100, 100);
+        int y = (int)this.getServer().getPosition().getY();
+        this.setBounds(x - 185, y - 90, 120, 90);
 
         /* Adding child */
         this.add(title);

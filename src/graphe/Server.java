@@ -6,6 +6,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import area.Area;
 import listener.ServerListener;
 
 import java.awt.Color;
@@ -14,6 +15,7 @@ public class Server extends JPanel{
     Point position;
     String ipAdress;
     Vector<String> listSites;
+    Area area;
 
     //Constructor
     public Server(){ 
@@ -45,6 +47,9 @@ public class Server extends JPanel{
     public Point getPosition(){
         return this.position;
     }
+    public Area getArea(){
+        return this.area;
+    }
 
     // Setters
     public void setIpAdress(String newIp){
@@ -55,6 +60,9 @@ public class Server extends JPanel{
     }
     public void setPosition(Point p){
         this.position = p;
+    }
+    public void setArea(Area a){
+        this.area = a;
     }
 
     // Add new sites

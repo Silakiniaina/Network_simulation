@@ -24,6 +24,7 @@ public class ButtonAddListener implements ActionListener{
         }else{
             HashMap<String,Object> data = this.getForm().getValues();
             Server s = new Server(this.getForm().getPosition(),(String)data.get("ip"), (Vector<String>)data.get("sites"));
+            s.setArea(this.getForm().getArea());
             this.getForm().getArea().addServer(s);
             this.getForm().getArea().revalidate();
             this.getForm().getArea().repaint();

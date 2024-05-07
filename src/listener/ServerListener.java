@@ -3,6 +3,7 @@ package listener;
 import java.awt.event.*;
 import java.util.Vector;
 
+import form.ServerMenu;
 import graphe.Server;
 
 public class ServerListener implements MouseListener{
@@ -19,7 +20,10 @@ public class ServerListener implements MouseListener{
         Server clicked = (Server)e.getComponent();
         for(Server s : this.getListServer()){
             if(s.equals(clicked)){
-                System.out.println("Clicked server");
+                ServerMenu sm = new ServerMenu(s);
+                s.getArea().add(sm);
+                s.getArea().revalidate();
+                s.getArea().repaint();
             }
         }
     }
