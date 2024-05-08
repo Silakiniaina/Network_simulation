@@ -1,5 +1,9 @@
 package graphe;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import javax.swing.JPanel;
 
 public class Link extends JPanel{
@@ -13,7 +17,18 @@ public class Link extends JPanel{
         this.setTarget(target);
         this.setPing(ping);
     }
-    
+
+    /* Draw link */
+    public void paintComponent(Graphics g){
+        Graphics2D g2d = (Graphics2D)g;
+        g2d.setColor(Color.BLACK);
+        int x1 = (int)this.getSource().getPosition().getX();
+        int y1 = (int)this.getSource().getPosition().getY();
+        int x2 = (int)this.getTarget().getPosition().getX();
+        int y2= (int)this.getTarget().getPosition().getX();
+        g2d.drawLine(x1, y1, x2, y2);
+    }
+
     /* Getters */
     public Server getSource() {
         return source;
