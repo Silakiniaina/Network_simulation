@@ -25,7 +25,6 @@ public class ServerListener implements MouseListener{
                     this.setServerMenu(new ServerMenu(s));
                     s.getArea().add(this.getServerMenu());
                 }else{
-                    // s.getArea().remove(this.getServerMenu());
                     this.getServerMenu().setServer(s);
                 }
                 s.getArea().update();
