@@ -24,15 +24,14 @@ public class AreaListener implements MouseListener{
     public void mouseClicked(MouseEvent e){
         Point p = e.getPoint();
         if(e.getButton() == MouseEvent.BUTTON3){
-            System.out.println("Clicked RIGHT on : "+p.getX()+" , y="+p.getY());
             this.getForm().setPosition(p);
             this.getForm().update();
             this.getArea().add(this.getForm());
         }else if(e.getButton() == MouseEvent.BUTTON1){
-            System.out.println("Clicked LEFT on : "+p.getX()+" , y="+p.getY());
             this.getForm().hide();
             ServerMenu s = this.getArea().getServerMenu();
             if(s != null)s.hide();
+            this.getArea().clearFocus();
         }
         this.getArea().update();
     }

@@ -14,6 +14,8 @@ public class Server extends JPanel{
     String ipAdress;
     Vector<String> listSites;
     Area area;
+    private boolean isFocused;
+    private boolean isInChoice;
 
     //Constructor
     public Server(){ 
@@ -29,9 +31,29 @@ public class Server extends JPanel{
         this.draw();
     }
 
+    /* Check if this server has no link with the server in argument */
+    public boolean isLinkedWith(Server s){
+        boolean result = false;
+        if(!s.equals(this)){
+            Vector<Link> ls = this.getArea().getLinks();
+            for(Link l : ls){
+                if((l.getSource().equals(this) && l.getTarget().equals(s)) || (l.getSource().equals(s) && l.getTarget().equals(this))){
+                    result = true;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
     // Draw a server
     public void draw(){
-        this.setBorder(BorderFactory.createLineBorder(Color.BLUE,3,true));
+        /* Highlight the server to blue per default */
+        Color borderColor = Color.BLUE;
+        /* Highlight the server to green when another server is seeking to link */
+        if(this.isInChoice)borderColor = Color.GREEN;
+        /* Highlight the server to red when it's focused */
+        else if(this.isFocused && !this.isInChoice())borderColor = Color.RED;
+        this.setBorder(BorderFactory.createLineBorder(borderColor,3,true));
         this.setBackground(Color.LIGHT_GRAY);
     }
 
@@ -39,15 +61,11 @@ public class Server extends JPanel{
     public void findServerToLink(){
         Vector<Server> ls = this.getArea().getListServer();
         for(Server s : ls){
-            if(!s.equals(this)){
-                s.highlight();
+            if(!s.equals(this) && !this.isLinkedWith(s)){
+                s.setInChoice(true);
             }
         }
-    }
-    /* Highlight the server when another server is seeking to link */
-    public void highlight(){
-        this.setBorder(BorderFactory.createLineBorder(Color.GREEN,3,true));
-        this.setBackground(Color.LIGHT_GRAY);
+        this.getArea().repaint();
     }
 
     // Getters
@@ -63,6 +81,12 @@ public class Server extends JPanel{
     public Area getArea(){
         return this.area;
     }
+    public boolean isFocused(){
+        return this.isFocused;
+    }
+    public boolean isInChoice(){
+        return this.isInChoice;
+    }
 
     // Setters
     public void setIpAdress(String newIp){
@@ -76,6 +100,12 @@ public class Server extends JPanel{
     }
     public void setArea(Area a){
         this.area = a;
+    }
+    public void setFocused(boolean b){
+        this.isFocused = b;
+    }
+    public void setInChoice(boolean b){
+        this.isInChoice = b;
     }
 
     // Add new sites

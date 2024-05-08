@@ -27,6 +27,14 @@ public class Area extends JPanel{
         this.setServerListener(new ServerListener());
         this.setLinks(new Vector<Link>());
     }
+
+    /* Clear focus */
+    public void clearFocus(){
+        this.setServerSeeking(null);
+        for(Server s : this.getListServer()){
+            s.setInChoice(false);
+        }
+    }
     
     /* updating all the components in the area */
     public void update(){
@@ -90,6 +98,12 @@ public class Area extends JPanel{
     @Override
     public void paint(Graphics g) {
         super.paint(g);
+        /* Drawing all the servers */
+        for(Server s : this.getListServer()){
+            s.draw();
+        }
+
+        /* Drawing all the links */
         for(Link l : this.getLinks()){
             l.draw(g);
         }
