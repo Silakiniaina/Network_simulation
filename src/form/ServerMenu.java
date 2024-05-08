@@ -9,15 +9,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import graphe.Server;
+import listener.ServerMenuListener;
 
 public class ServerMenu extends JPanel{
     JButton buttonLink;
     JButton buttonDelete;
     Server server;
+    ServerMenuListener serverMenuListener;
     
     /* Constructors */
     public ServerMenu(Server s){
         this.setServer(s);
+        this.setServerListener(new ServerMenuListener(this));
         this.initComponent();
     }
 
@@ -50,11 +53,13 @@ public class ServerMenu extends JPanel{
         this.getButtonLink().setBackground(Color.BLUE);
         this.getButtonLink().setOpaque(true);
         this.getButtonLink().setBounds(5, 22, 110, 30);
+        this.getButtonLink().addActionListener(this.getServerMenuListener());
         
         /* Button remove */
         this.setButtonDelete(new JButton("Delete"));
         this.getButtonDelete().setBackground(Color.RED);
         this.getButtonDelete().setBounds(5, 55, 110, 30);
+        this.getButtonDelete().addActionListener(this.getServerMenuListener());
         
         this.update();
 
@@ -74,6 +79,9 @@ public class ServerMenu extends JPanel{
     public Server getServer(){
         return this.server;
     }
+    public ServerMenuListener getServerMenuListener(){
+        return this.serverMenuListener;
+    }
     
     /* Setters */
     public void setButtonLink(JButton buttonLink) {
@@ -85,5 +93,8 @@ public class ServerMenu extends JPanel{
     public void setServer(Server s){
         this.server = s;
         this.update();
+    }
+    public void setServerListener(ServerMenuListener sml){
+        this.serverMenuListener = sml;
     }
 }

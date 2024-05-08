@@ -23,7 +23,7 @@ public class ButtonAddListener implements ActionListener{
             System.out.println("Please fill the IP input");
         }else{
             HashMap<String,Object> data = this.getForm().getValues();
-            Server s = new Server(this.getForm().getPosition(),(String)data.get("ip"), (Vector<String>)data.get("sites"));
+            Server s = new Server(this.getForm().getPosition(),(String)data.get("IP"), (Vector<String>)data.get("sites"));
             s.setArea(this.getForm().getArea());
             this.getForm().getArea().addServer(s);
             this.getForm().hide();
