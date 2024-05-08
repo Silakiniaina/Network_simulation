@@ -7,8 +7,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import area.Area;
-import listener.ServerListener;
-
 import java.awt.Color;
 
 public class Server extends JPanel{

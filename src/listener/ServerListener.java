@@ -8,6 +8,7 @@ import graphe.Server;
 
 public class ServerListener implements MouseListener{
     Vector<Server> listServers;
+    ServerMenu serverMenu;
 
     /* Constructors */
     public ServerListener(){
@@ -20,9 +21,16 @@ public class ServerListener implements MouseListener{
         Server clicked = (Server)e.getComponent();
         for(Server s : this.getListServer()){
             if(s.equals(clicked)){
-                ServerMenu sm = new ServerMenu(s);
-                s.getArea().add(sm);
+                if(this.getServerMenu() == null){
+                    this.setServerMenu(new ServerMenu(s));
+                }else{
+                    // s.getArea().remove(this.getServerMenu());
+                    this.getServerMenu().setServer(s);
+                }
+                this.getServerMenu().update();
+                s.getArea().add(this.getServerMenu());
                 s.getArea().update();
+
             }
         }
     }
@@ -31,10 +39,16 @@ public class ServerListener implements MouseListener{
     public Vector<Server> getListServer() {
         return listServers;
     }
+    public ServerMenu getServerMenu(){
+        return this.serverMenu;
+    }
     
     /* Setters */
     public void setListServer(Vector<Server> ls) {
         this.listServers = ls;
+    }
+    public void setServerMenu(ServerMenu s){
+        this.serverMenu = s;
     }
 
     /* Adding a server */

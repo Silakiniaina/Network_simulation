@@ -1,11 +1,9 @@
 package form;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,6 +21,13 @@ public class ServerMenu extends JPanel{
         this.initComponent();
     }
 
+    /* update the position of the serverMenu */
+    public void update(){
+        /* Location */
+        int x = (int)this.getServer().getPosition().getX();
+        int y = (int)this.getServer().getPosition().getY();
+        this.setBounds(x - 185, y - 90, 120, 90);
+    }
     /* Get the form of the menu */
     private void initComponent(){
         /* Layout  */
@@ -46,10 +51,7 @@ public class ServerMenu extends JPanel{
         this.getButtonDelete().setBackground(Color.RED);
         this.getButtonDelete().setBounds(5, 55, 110, 30);
         
-        /* Location */
-        int x = (int)this.getServer().getPosition().getX();
-        int y = (int)this.getServer().getPosition().getY();
-        this.setBounds(x - 185, y - 90, 120, 90);
+        this.update();
 
         /* Adding child */
         this.add(title);
@@ -77,5 +79,6 @@ public class ServerMenu extends JPanel{
     }
     public void setServer(Server s){
         this.server = s;
+        this.update();
     }
 }
