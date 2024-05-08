@@ -35,6 +35,15 @@ public class Server extends JPanel{
         this.setBackground(Color.LIGHT_GRAY);
     }
 
+    /* Find a server to link with */
+    public void findServerToLink(){
+        Vector<Server> ls = this.getArea().getListServer();
+        for(Server s : ls){
+            if(!s.equals(this)){
+                s.highlight();
+            }
+        }
+    }
     /* Highlight the server when another server is seeking to link */
     public void highlight(){
         this.setBorder(BorderFactory.createLineBorder(Color.GREEN,3,true));

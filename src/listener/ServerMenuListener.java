@@ -20,7 +20,7 @@ public class ServerMenuListener implements ActionListener{
         JButton btnClicked = (JButton)e.getSource();
         String btnLabel = btnClicked.getText();
         if(btnLabel.toLowerCase().equals("link")){
-            this.getServerMenu().getServer().highlight();
+            this.getServerMenu().getServer().findServerToLink();
             System.out.println("Btn LINK on Server IP : "+this.getServerMenu().getServer().getIpAdress());
         }else if(btnLabel.toLowerCase().equals("delete")){
             System.out.println("Btn DELETE on Server IP : "+this.getServerMenu().getServer().getIpAdress());
