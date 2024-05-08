@@ -18,6 +18,7 @@ public class ButtonAddListener implements ActionListener{
 
     /* Override of the actionPerformed function to manage the creation of new Server */
     @Override
+    @SuppressWarnings("unchecked")
     public void actionPerformed(ActionEvent arg0) {
         if(!this.getForm().isOkay()){
             System.out.println("Please fill the IP input");

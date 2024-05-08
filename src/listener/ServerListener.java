@@ -27,11 +27,15 @@ public class ServerListener implements MouseListener{
                     s.getArea().add(this.getServerMenu());
                 }else{
                     Server inSeek = this.getServerMenu().getServer().getArea().getServerSeeking();
+                    if(inSeek == null){
+                        clicked.getArea().clearAllServerFocus();
+                        clicked.setFocused(true);
+                        this.getServerMenu().setServer(s);
+                    }
                     if(inSeek != null && !inSeek.isLinkedWith(clicked)){
                         Link l = new Link(inSeek,clicked,10);
                         s.getArea().addLink(l);
                     }
-                    this.getServerMenu().setServer(s);
                 }
             }
         }
@@ -62,25 +66,21 @@ public class ServerListener implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent arg0) {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public void mouseExited(MouseEvent arg0) {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public void mousePressed(MouseEvent arg0) {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public void mouseReleased(MouseEvent arg0) {
-        // TODO Auto-generated method stub
         
     }
 }

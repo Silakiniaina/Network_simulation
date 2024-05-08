@@ -28,11 +28,19 @@ public class Area extends JPanel{
         this.setLinks(new Vector<Link>());
     }
 
+    /* remove focus to all servers */
+    public void clearAllServerFocus(){
+        for(Server s : this.getListServer()){
+            s.setFocused(false);
+        }
+    }
+    
     /* Clear focus */
     public void clearFocus(){
         this.setServerSeeking(null);
         for(Server s : this.getListServer()){
             s.setInChoice(false);
+            s.setFocused(false);
         }
     }
     
