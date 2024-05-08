@@ -1,6 +1,7 @@
 package graphe;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -22,11 +23,17 @@ public class Link extends JPanel{
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
         g2d.setColor(Color.BLACK);
+        g2d.setFont(new Font("Sans serif",Font.BOLD, 14));
         int x1 = (int)this.getSource().getPosition().getX();
         int y1 = (int)this.getSource().getPosition().getY();
         int x2 = (int)this.getTarget().getPosition().getX();
-        int y2= (int)this.getTarget().getPosition().getY();
+        int y2 = (int)this.getTarget().getPosition().getY();
         g2d.drawLine(x1, y1, x2, y2);
+        
+        /* Drawing ping */
+        int centerX = (int)((x1 + x2)/2);
+        int centerY = (int)((y1 + y2)/2);
+        g2d.drawString(String.valueOf(this.getPing()), centerX, centerY);
     }
 
 

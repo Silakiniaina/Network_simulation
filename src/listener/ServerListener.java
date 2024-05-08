@@ -20,6 +20,7 @@ public class ServerListener implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         Server clicked = (Server)e.getComponent();
+        clicked.getArea().update();
         for(Server s : this.getListServer()){
             if(s.equals(clicked)){
                 if(this.getServerMenu() == null){
@@ -28,7 +29,7 @@ public class ServerListener implements MouseListener{
                 }else{
                     Server inSeek = this.getServerMenu().getServer().getArea().getServerSeeking();
                     if(inSeek != null){
-                        Link l = new Link(inSeek,this.getServerMenu().getServer(),10);
+                        Link l = new Link(inSeek,clicked,10);
                         s.getArea().addLink(l);
                     }
                     this.getServerMenu().setServer(s);
