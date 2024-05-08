@@ -35,6 +35,12 @@ public class Server extends JPanel{
         this.setBackground(Color.LIGHT_GRAY);
     }
 
+    /* Highlight the server when another server is seeking to link */
+    public void highlight(){
+        this.setBorder(BorderFactory.createLineBorder(Color.GREEN,3,true));
+        this.setBackground(Color.LIGHT_GRAY);
+    }
+
     // Getters
     public String getIpAdress(){
         return this.ipAdress;
