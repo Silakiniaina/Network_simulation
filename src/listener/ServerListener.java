@@ -23,12 +23,11 @@ public class ServerListener implements MouseListener{
             if(s.equals(clicked)){
                 if(this.getServerMenu() == null){
                     this.setServerMenu(new ServerMenu(s));
+                    s.getArea().add(this.getServerMenu());
                 }else{
                     // s.getArea().remove(this.getServerMenu());
                     this.getServerMenu().setServer(s);
                 }
-                this.getServerMenu().update();
-                s.getArea().add(this.getServerMenu());
                 s.getArea().update();
 
             }

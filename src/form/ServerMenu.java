@@ -21,6 +21,11 @@ public class ServerMenu extends JPanel{
         this.initComponent();
     }
 
+    /* Hide the server Menu */
+    public void hide(){
+        this.setBounds(0, 0, 0, 0);
+    }
+
     /* update the position of the serverMenu */
     public void update(){
         /* Location */

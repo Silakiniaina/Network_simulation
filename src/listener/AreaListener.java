@@ -3,6 +3,7 @@ package listener;
 import java.awt.*;
 import area.*;
 import form.ServerForm;
+import form.ServerMenu;
 
 import java.awt.event.*;
 
@@ -30,6 +31,8 @@ public class AreaListener implements MouseListener{
         }else if(e.getButton() == MouseEvent.BUTTON1){
             System.out.println("Clicked LEFT on : "+p.getX()+" , y="+p.getY());
             this.getForm().hide();
+            ServerMenu s = this.getArea().getServerMenu();
+            if(s != null)s.hide();
         }
         this.getArea().update();
     }

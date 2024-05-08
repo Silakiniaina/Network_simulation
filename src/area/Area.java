@@ -1,6 +1,10 @@
 package area;
 
 import javax.swing.JPanel;
+
+import form.ServerMenu;
+
+import java.awt.Component;
 import java.util.Vector;
 import graphe.Server;
 import listener.AreaListener;
@@ -30,6 +34,17 @@ public class Area extends JPanel{
     }
     public ServerListener getServerListener(){
         return this.serverListener;
+    }
+    public ServerMenu getServerMenu(){
+        ServerMenu result = null;
+        Component[] lsComponents = this.getComponents();
+        for (Component c : lsComponents){
+            if(c instanceof ServerMenu){
+                result = (ServerMenu)c;
+                break;
+            }
+        }
+        return result;
     }
 
     /* Setter */
