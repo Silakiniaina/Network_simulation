@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.Vector;
 
 import form.ServerMenu;
+import graphe.Link;
 import graphe.Server;
 
 public class ServerListener implements MouseListener{
@@ -25,12 +26,16 @@ public class ServerListener implements MouseListener{
                     this.setServerMenu(new ServerMenu(s));
                     s.getArea().add(this.getServerMenu());
                 }else{
+                    Server inSeek = this.getServerMenu().getServer().getArea().getServerSeeking();
+                    if(inSeek != null){
+                        Link l = new Link(inSeek,this.getServerMenu().getServer(),10);
+                        s.getArea().addLink(l);
+                    }
                     this.getServerMenu().setServer(s);
                 }
-                s.getArea().update();
-
             }
         }
+        clicked.getArea().update();
     }
 
     /* Getters */

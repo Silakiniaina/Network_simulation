@@ -5,7 +5,10 @@ import javax.swing.JPanel;
 import form.ServerMenu;
 
 import java.awt.Component;
+import java.awt.Graphics;
 import java.util.Vector;
+
+import graphe.Link;
 import graphe.Server;
 import listener.AreaListener;
 import listener.ServerListener;
@@ -13,6 +16,8 @@ import listener.ServerListener;
 public class Area extends JPanel{
     Vector<Server> listServer;
     ServerListener serverListener;
+    Server serverSeeking;
+    Vector<Link> links;
 
     /* Constructor */
     public Area(){
@@ -20,6 +25,7 @@ public class Area extends JPanel{
         this.setLayout(null);
         this.addMouseListener(new AreaListener(this));
         this.setServerListener(new ServerListener());
+        this.setLinks(new Vector<Link>());
     }
     
     /* updating all the components in the area */
@@ -46,6 +52,12 @@ public class Area extends JPanel{
         }
         return result;
     }
+    public Server getServerSeeking(){
+        return this.serverSeeking;
+    }
+    public Vector<Link> getLinks(){
+        return this.links;
+    }
 
     /* Setter */
     public void setListServer(Vector<Server> ls){
@@ -53,6 +65,12 @@ public class Area extends JPanel{
     }
     public void setServerListener(ServerListener sl){
         this.serverListener = sl;
+    }
+    public void setServerSeeking(Server s){
+        this.serverSeeking = s;
+    }
+    public void setLinks(Vector<Link> ls){
+        this.links = ls;
     }
 
     /* Adding new Server */
@@ -62,4 +80,20 @@ public class Area extends JPanel{
         this.getListServer().add(s);
         this.add(s);
     }
+
+    /* Add new link */
+    public void addLink(Link l){
+        this.getLinks().add(l);
+        this.add(l);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        for(Link l : this.getLinks()){
+            l.draw(g);
+        }
+    }
+
+    /* override paint function */
 }
