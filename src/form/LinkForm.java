@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 
 import graphe.Server;
+import listener.LinkFormListener;
 
 public class LinkForm extends JPanel{
     JSpinner inputPing;
@@ -45,6 +46,7 @@ public class LinkForm extends JPanel{
         /* Button add */
         JButton btn = new JButton("Link");
         btn.setPreferredSize(new Dimension(90,20));
+        btn.addActionListener(new LinkFormListener(this));
 
         this.add(title);
         this.add(this.getInputPing());
