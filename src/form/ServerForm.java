@@ -1,20 +1,23 @@
-package area;
+package form;
 
 import javax.swing.*;
+
+import area.Area;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Vector;
 
 import listener.ButtonAddListener;;
 
-public class Form extends JPanel{
+public class ServerForm extends JPanel{
     Area area;
     JTextField inputIp;
     JTextField inputSites;
     Point position;
 
     /* Constructors */
-    public Form(Point position){
+    public ServerForm(Point position){
         this.setPosition(position);
         this.setBackground(Color.WHITE);
         this.initComponent();

@@ -5,38 +5,40 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Vector;
 
-import area.Form;
+import form.ServerForm;
 import graphe.Server;
 
 public class ButtonAddListener implements ActionListener{
-    Form form;
+    ServerForm form;
 
     /* Constructor */
-    public ButtonAddListener(Form f){
+    public ButtonAddListener(ServerForm f){
         this.setForm(f);
     }
 
     /* Override of the actionPerformed function to manage the creation of new Server */
     @Override
+    @SuppressWarnings("unchecked")
     public void actionPerformed(ActionEvent arg0) {
         if(!this.getForm().isOkay()){
             System.out.println("Please fill the IP input");
         }else{
             HashMap<String,Object> data = this.getForm().getValues();
-            Server s = new Server(this.getForm().getPosition(),(String)data.get("ip"), (Vector<String>)data.get("sites"));
+            Server s = new Server(this.getForm().getPosition(),(String)data.get("IP"), (Vector<String>)data.get("sites"));
+            s.setArea(this.getForm().getArea());
             this.getForm().getArea().addServer(s);
-            this.getForm().getArea().revalidate();
-            this.getForm().getArea().repaint();
+            this.getForm().hide();
+            this.getForm().getArea().update();
         }
     }
 
     /* Getters */
-    public Form getForm(){
+    public ServerForm getForm(){
         return this.form;
     }
 
     /* Setters */
-    public void setForm(Form f){
+    public void setForm(ServerForm f){
         this.form = f;
     }
 
