@@ -2,6 +2,7 @@ package area;
 
 import javax.swing.JPanel;
 
+import form.LinkForm;
 import form.ServerMenu;
 
 import java.awt.Component;
@@ -18,6 +19,7 @@ public class Area extends JPanel{
     ServerListener serverListener;
     Server serverSeeking;
     Vector<Link> links;
+    LinkForm linkForm;
 
     /* Constructor */
     public Area(){
@@ -41,6 +43,9 @@ public class Area extends JPanel{
         for(Server s : this.getListServer()){
             s.setInChoice(false);
             s.setFocused(false);
+        }
+        if(this.getLinkForm() != null){
+            this.remove(this.getLinkForm());
         }
     }
     
@@ -74,6 +79,9 @@ public class Area extends JPanel{
     public Vector<Link> getLinks(){
         return this.links;
     }
+    public LinkForm getLinkForm(){
+        return this.linkForm;
+    }
 
     /* Setter */
     public void setListServer(Vector<Server> ls){
@@ -87,6 +95,13 @@ public class Area extends JPanel{
     }
     public void setLinks(Vector<Link> ls){
         this.links = ls;
+    }
+    public void setLinkForm(LinkForm lf){
+        if(this.getLinkForm() != null){
+            this.remove(this.getLinkForm());
+        }
+        this.linkForm = lf;
+        this.add(this.getLinkForm());
     }
 
     /* Adding new Server */

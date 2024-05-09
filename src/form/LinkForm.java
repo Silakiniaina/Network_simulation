@@ -1,8 +1,11 @@
 package form;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Point;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,17 +14,19 @@ import javax.swing.JSpinner;
 
 public class LinkForm extends JPanel{
     JSpinner inputPing;
+    Point position;
 
     /* Constructor */
-    public LinkForm(){
+    public LinkForm(Point p){
         this.setInputPing(new JSpinner());
-        this.initComponent();
+        this.initComponent(p);
     }
 
     /* init component */
-    private void initComponent(){
-        this.setPreferredSize(new Dimension(100,60));
+    private void initComponent(Point p){
+        this.setBounds((int)p.getX(), (int)p.getY(), 100, 70);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK,2,true));
 
         /* Title */
         JLabel title = new JLabel("Ping");

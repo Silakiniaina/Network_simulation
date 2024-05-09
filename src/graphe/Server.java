@@ -68,6 +68,16 @@ public class Server extends JPanel{
         this.getArea().repaint();
     }
 
+    /* find the middle middle point between two server */
+    public Point getMiddlePoint(Server s){
+        int x1 = (int)this.getPosition().getX();
+        int y1 = (int)this.getPosition().getY();
+        int x2 = (int)s.getPosition().getX();
+        int y2 = (int)s.getPosition().getY();
+
+        return new Point((int)((x1 + x2)/2),(int)((y1 + y2)/2));
+    }
+
     // Getters
     public String getIpAdress(){
         return this.ipAdress;

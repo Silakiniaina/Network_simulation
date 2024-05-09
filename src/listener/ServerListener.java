@@ -1,8 +1,10 @@
 package listener;
 
+import java.awt.Point;
 import java.awt.event.*;
 import java.util.Vector;
 
+import form.LinkForm;
 import form.ServerMenu;
 import graphe.Link;
 import graphe.Server;
@@ -33,8 +35,11 @@ public class ServerListener implements MouseListener{
                         this.getServerMenu().setServer(s);
                     }
                     if(inSeek != null && !inSeek.isLinkedWith(clicked)){
-                        Link l = new Link(inSeek,clicked,10);
-                        s.getArea().addLink(l);
+                        Point p = new Point(clicked.getX() + 100, clicked.getY());
+                        LinkForm lf = new LinkForm(p);
+                        ServerMenu sm = clicked.getArea().getServerMenu();
+                        if(sm != null)sm.hide();
+                        clicked.getArea().setLinkForm(lf);
                     }
                 }
             }
