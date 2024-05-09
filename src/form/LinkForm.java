@@ -12,13 +12,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 
+import graphe.Server;
+
 public class LinkForm extends JPanel{
     JSpinner inputPing;
     Point position;
+    Server clickedServer;
 
     /* Constructor */
-    public LinkForm(Point p){
+    public LinkForm(Server s){
         this.setInputPing(new JSpinner());
+        this.setClickedServer(s);
+        Point p = new Point(s.getX() + 100, s.getY());
         this.initComponent(p);
     }
 
@@ -54,9 +59,15 @@ public class LinkForm extends JPanel{
     public JSpinner getInputPing(){
         return this.inputPing;
     }
+    public Server getClickedServer(){
+        return this.clickedServer;
+    }
 
     /* Setters */
     public void setInputPing(JSpinner s){
         this.inputPing = s;
+    }
+    public void setClickedServer(Server s){
+        this.clickedServer = s;
     }
 }

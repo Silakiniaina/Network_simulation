@@ -35,8 +35,7 @@ public class ServerListener implements MouseListener{
                         this.getServerMenu().setServer(s);
                     }
                     if(inSeek != null && !inSeek.isLinkedWith(clicked)){
-                        Point p = new Point(clicked.getX() + 100, clicked.getY());
-                        LinkForm lf = new LinkForm(p);
+                        LinkForm lf = new LinkForm(clicked);
                         ServerMenu sm = clicked.getArea().getServerMenu();
                         if(sm != null)sm.hide();
                         clicked.getArea().setLinkForm(lf);
