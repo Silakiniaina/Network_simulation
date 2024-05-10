@@ -20,7 +20,6 @@ public class SearchListener implements ActionListener{
     public void actionPerformed(ActionEvent e){
         String siteToFind = this.getSearchForm().getValues();
         Vector<Server> res = this.getSearchForm().getFinder().getArea().findServersHaving(siteToFind);
-        System.out.println("Server having : "+res.size());
         int idShortest = 0;
         int pathLength = Integer.MAX_VALUE;
         for(int i=0; i<res.size(); i++){
@@ -29,7 +28,6 @@ public class SearchListener implements ActionListener{
             if(Server.sumDistances(path) < pathLength){
                 idShortest = i;
                 pathLength = Server.sumDistances(path);
-                System.out.println("New path length : "+pathLength+"  for ip : "+s.getIpAdress());
             }
         }
         

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Vector;
@@ -24,6 +23,7 @@ public class Server extends JPanel {
     private boolean isFocused;
     private boolean isInChoice;
     private int distance;
+    private boolean isPath;
 
     // Constructor
     public Server() {
@@ -40,13 +40,28 @@ public class Server extends JPanel {
         this.draw();
     }
 
+    /* Remove all path */
+    public void removeAllPath(){
+        Vector<Link> links = this.getArea().getLinks();
+        for(Server s : this.getArea().getListServer()){
+            s.setIsPath(false);
+        }
+        for(Link l : links){
+                l.setIsPath(false);
+        }
+        this.getArea().update();
+    }
+
     /* Draw the path */
     public void drawPath(ArrayList<Server> ls) {
+        this.removeAllPath();
         Vector<Link> links = this.getArea().getLinks();
         Server source = ls.get(0);
+        source.setIsPath(true);
         for(int i=1; i<ls.size(); i++){
+            ls.get(i).setIsPath(true);
             for(Link l : links){
-                if((l.getSource().equals(source) && l.getTarget().equals(ls.get(i)))){
+                if((l.getSource().equals(source) && l.getTarget().equals(ls.get(i))) || (l.getSource().equals(ls.get(i)) && l.getTarget().equals(source))){
                     l.setIsPath(true);
                     source = ls.get(i);
                 }
@@ -151,7 +166,11 @@ public class Server extends JPanel {
         else if (this.isFocused && !this.isInChoice())
             borderColor = Color.RED;
         this.setBorder(BorderFactory.createLineBorder(borderColor, 3, true));
-        this.setBackground(Color.LIGHT_GRAY);
+        if(this.getIsPath()){
+            this.setBackground(Color.RED);
+        }else{
+            this.setBackground(Color.LIGHT_GRAY);
+        }
     }
 
     /* Find a server to link with */
@@ -204,6 +223,10 @@ public class Server extends JPanel {
         return this.distance;
     }
 
+    public boolean getIsPath(){
+        return this.isPath;
+    }
+
     // Setters
     public void setIpAdress(String newIp) {
         this.ipAdress = newIp;
@@ -231,6 +254,10 @@ public class Server extends JPanel {
 
     public void setDistance(int d) {
         this.distance = d;
+    }
+
+    public void setIsPath(boolean b){
+        this.isPath = b;
     }
 
     // Add new sites
