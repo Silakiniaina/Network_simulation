@@ -16,5 +16,5 @@ rm -R "$current_dir"/src/temp
 echo "Compilation finished".
 echo "Running test "
 cd bin
-java test.Test
+java test.Main
 cd ..

@@ -1,8 +1,10 @@
 package form;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -29,8 +31,9 @@ public class SearchForm extends JPanel{
 
     /* init component */
     public void initComponent(){
-        this.setBounds(20, 20, 100, 50);
+        this.setBounds(20, 20, 100, 80);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK,2,true));
 
         /* Title */
         JLabel title = new JLabel("Search");

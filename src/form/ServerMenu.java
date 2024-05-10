@@ -56,7 +56,7 @@ public class ServerMenu extends JPanel{
         this.getButtonLink().addActionListener(this.getServerMenuListener());
         
         /* Button remove */
-        this.setButtonDelete(new JButton("Delete"));
+        this.setButtonDelete(new JButton("Search"));
         this.getButtonDelete().setBackground(Color.RED);
         this.getButtonDelete().setBounds(5, 55, 110, 30);
         this.getButtonDelete().addActionListener(this.getServerMenuListener());
