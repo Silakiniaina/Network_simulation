@@ -3,6 +3,7 @@ package area;
 import javax.swing.JPanel;
 
 import form.LinkForm;
+import form.SearchForm;
 import form.ServerMenu;
 
 import java.awt.Component;
@@ -20,6 +21,7 @@ public class Area extends JPanel{
     Server serverSeeking;
     Vector<Link> links;
     LinkForm linkForm;
+    private SearchForm searchForm;
 
     /* Constructor */
     public Area(){
@@ -28,6 +30,21 @@ public class Area extends JPanel{
         this.addMouseListener(new AreaListener(this));
         this.setServerListener(new ServerListener());
         this.setLinks(new Vector<Link>());
+        this.setSearchForm(null);
+    }
+
+    /* Finding a server having a site */
+    public Vector<Server> findServersHaving(String site){
+        Vector<Server> result = new Vector<Server>();
+        for(Server s : this.getListServer()){
+            for(String str : s.getListSites()){
+                if(str.equals(site)){
+                    result.add(s);
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
     /* remove focus to all servers */
@@ -82,6 +99,9 @@ public class Area extends JPanel{
     public LinkForm getLinkForm(){
         return this.linkForm;
     }
+    public SearchForm getSearchForm(){
+        return this.searchForm;
+    }
 
     /* Setter */
     public void setListServer(Vector<Server> ls){
@@ -102,6 +122,15 @@ public class Area extends JPanel{
         }
         this.linkForm = lf;
         this.add(this.getLinkForm());
+    }
+    public void setSearchForm(SearchForm sf){
+        if(this.getSearchForm() != null){
+            this.remove(this.getSearchForm());
+        }
+        this.searchForm = sf;
+        if(this.getSearchForm() != null){
+            this.add(this.getSearchForm());
+        }
     }
 
     /* Adding new Server */

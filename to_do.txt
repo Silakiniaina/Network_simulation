@@ -14,14 +14,14 @@ SPRINT01: Creation of a server
 	 - (OK)call function draw to the Server instancied
 
 SPRINT02: Linking 2 Servers or more
-[]choose a server to create link with another server
+[x]choose a server to create link with another server
 
-- Add a mouseListener to the server :
+- (OK)Add a mouseListener to the server :
   -When clicked :
-  * show a form : make link , delete
+  * (OK)show a form : make link , delete
     * When click to make link :
-      -All the border of another server will be : Blue with shadow
-      -When click to another server : A line will be drawn corresponding the current server to the clicked server and their pounds will be written in the middle of the line.
+      -(OK)All the border of another server will be : Blue with shadow
+      -(OK)When click to another server : A line will be drawn corresponding the current server to the clicked server and their pounds will be written in the middle of the line.
 
 SPRINT03: Drag a server
 []drag a server to change its place

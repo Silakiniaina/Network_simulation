@@ -11,6 +11,7 @@ public class Link extends JPanel{
     Server source; 
     Server target;
     int ping;
+    boolean isPath;
 
     /* Constructors */
     public Link(Server source, Server target, int ping){
@@ -22,7 +23,11 @@ public class Link extends JPanel{
     /* Draw link */
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
-        g2d.setColor(Color.BLACK);
+        if(this.getIsPath() == true){
+            g2d.setColor(Color.RED);
+        }else{
+            g2d.setColor(Color.BLACK);
+        }
         g2d.setFont(new Font("Sans serif",Font.BOLD, 14));
         int x1 = (int)this.getSource().getPosition().getX();
         int y1 = (int)this.getSource().getPosition().getY();
@@ -31,11 +36,22 @@ public class Link extends JPanel{
         g2d.drawLine(x1, y1, x2, y2);
         
         /* Drawing ping */
+        g2d.setColor(Color.BLACK);
         int centerX = (int)((x1 + x2)/2);
         int centerY = (int)((y1 + y2)/2);
         g2d.drawString(String.valueOf(this.getPing()), centerX, centerY);
     }
 
+    /* Getting the mirror server */
+    public Server getOtherServer(Server s){
+        Server result = null;
+        if(this.getSource().equals(s)){
+            result = this.getTarget();
+        }else if(this.getTarget().equals(s)){
+            result = this.getSource();
+        }
+        return result;
+    }
 
     /* Getters */
     public Server getSource() {
@@ -47,6 +63,9 @@ public class Link extends JPanel{
     public int getPing() {
         return ping;
     }
+    public boolean getIsPath(){
+        return isPath;
+    }
 
     /* Setters */
     public void setSource(Server source) {
@@ -57,5 +76,8 @@ public class Link extends JPanel{
     }
     public void setPing(int ping) {
         this.ping = ping;
+    }
+    public void setIsPath(boolean b){
+        this.isPath = b;
     }
 }

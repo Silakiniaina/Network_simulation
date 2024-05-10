@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
+import form.SearchForm;
 import form.ServerMenu;
+import graphe.Server;
 
 public class ServerMenuListener implements ActionListener{
     ServerMenu serverMenu;
@@ -22,8 +24,10 @@ public class ServerMenuListener implements ActionListener{
         if(btnLabel.toLowerCase().equals("link")){
             this.getServerMenu().getServer().findServerToLink();
             this.getServerMenu().getServer().getArea().setServerSeeking(this.getServerMenu().getServer());
-        }else if(btnLabel.toLowerCase().equals("delete")){
-            System.out.println("Btn DELETE on Server IP : "+this.getServerMenu().getServer().getIpAdress());
+        }else if(btnLabel.toLowerCase().equals("search")){
+            Server finder = this.getServerMenu().getServer();
+            finder.getArea().setSearchForm(new SearchForm(finder));
+            finder.getArea().update();
         }     
     }
     /* Getters */
