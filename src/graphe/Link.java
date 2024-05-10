@@ -36,6 +36,16 @@ public class Link extends JPanel{
         g2d.drawString(String.valueOf(this.getPing()), centerX, centerY);
     }
 
+    /* Getting the mirror server */
+    public Server getOtherServer(Server s){
+        Server result = null;
+        if(this.getSource().equals(s)){
+            result = this.getTarget();
+        }else if(this.getTarget().equals(s)){
+            result = this.getSource();
+        }
+        return result;
+    }
 
     /* Getters */
     public Server getSource() {

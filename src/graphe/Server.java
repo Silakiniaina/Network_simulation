@@ -1,6 +1,13 @@
 package graphe; 
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -29,6 +36,61 @@ public class Server extends JPanel{
         int y = (int)this.getPosition().getY();
         this.setBounds(x - 60,y - 60,60,60);
         this.draw();
+    }
+
+    /* Finding the shortest way to a server */
+    public List<Server> findShortestPath(Server target) {
+        // Initialize distances and previous nodes
+        Map<Server, Integer> distances = new HashMap<>();
+        Map<Server, Server> previous = new HashMap<>();
+        PriorityQueue<Server> queue = new PriorityQueue<>(Comparator.comparingInt(distances::get));
+        
+        for (Server server : this.getArea().getListServer()) {
+            distances.put(server, server == this ? 0 : Integer.MAX_VALUE);
+            queue.add(server);
+        }
+
+        while (!queue.isEmpty()) {
+            Server current = queue.poll();
+            if (current == target) {
+                break; // Found the target server
+            }
+
+            for (Link link : current.getLinks()) {
+                Server neighbor = link.getOtherServer(current);
+                int distanceThroughCurrent = distances.get(current) + link.getPing();
+
+                if (distanceThroughCurrent < distances.get(neighbor)) {
+                    distances.put(neighbor, distanceThroughCurrent);
+                    previous.put(neighbor, current);
+                    queue.remove(neighbor); // Re-add to update priority
+                    queue.add(neighbor);
+                }
+            }
+        }
+
+        // Build the path from target to source
+        List<Server> path = new ArrayList<>();
+        Server current = target;
+        while (current != null) {
+            path.add(current);
+            current = previous.get(current);
+        }
+        Collections.reverse(path);
+
+        return path;
+    }
+
+    /* Getting all the links of a server */
+    public Vector<Link> getLinks(){
+        Vector<Link> result = new Vector<Link>();
+        Vector<Link> ls = this.getArea().getLinks();
+        for( Link l : ls){
+            if(l.getSource().equals(this) || l.getTarget().equals(this)){
+                result.add(l);
+            }
+        }
+        return result;
     }
 
     /* Check if this server has no link with the server in argument */
