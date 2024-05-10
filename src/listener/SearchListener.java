@@ -2,8 +2,11 @@ package listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import form.SearchForm;
+import graphe.Server;
 
 public class SearchListener implements ActionListener{
     SearchForm searchForm;
@@ -15,8 +18,24 @@ public class SearchListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
-        String ip = this.getSearchForm().getFinder().getIpAdress();
-        System.out.println("Find : "+ip);
+        String siteToFind = this.getSearchForm().getValues();
+        Vector<Server> res = this.getSearchForm().getFinder().getArea().findServersHaving(siteToFind);
+        System.out.println("Server having : "+res.size());
+        int idShortest = 0;
+        int pathLength = Integer.MAX_VALUE;
+        for(int i=0; i<res.size(); i++){
+            Server s = res.get(i);
+            ArrayList<Server> path = this.getSearchForm().getFinder().findShortestPath(s);
+            if(Server.sumDistances(path) < pathLength){
+                idShortest = i;
+                pathLength = Server.sumDistances(path);
+                System.out.println("New path length : "+pathLength+"  for ip : "+s.getIpAdress());
+            }
+        }
+        
+        ArrayList<Server> path = this.getSearchForm().getFinder().findShortestPath(res.get(idShortest));
+        this.getSearchForm().getFinder().drawPath(path);
+        this.getSearchForm().getFinder().getArea().update();
     }
 
     /* Getters */
