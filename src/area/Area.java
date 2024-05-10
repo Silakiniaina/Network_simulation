@@ -33,6 +33,20 @@ public class Area extends JPanel{
         this.setSearchForm(null);
     }
 
+    /* Finding a server having a site */
+    public Vector<Server> findServersHaving(String site){
+        Vector<Server> result = new Vector<Server>();
+        for(Server s : this.getListServer()){
+            for(String str : s.getListSites()){
+                if(str.equals(site)){
+                    result.add(s);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
     /* remove focus to all servers */
     public void clearAllServerFocus(){
         for(Server s : this.getListServer()){
